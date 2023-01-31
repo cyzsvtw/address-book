@@ -1,0 +1,448 @@
+#include <iostream>
+#define Max 1000
+using namespace std;
+struct con
+{
+    string name;
+    string sex;
+    int age;
+    string tel;
+    string addr;
+};
+
+
+struct adbk
+{
+    con Carr[Max+1];
+    int Size;
+};
+
+void add(adbk *p)
+{
+  if(p->Size>=Max)
+  {
+      cout<<"人數已滿";
+      return;
+  }
+  else
+  {
+
+    cout<<"姓名:";
+    string n="0";
+    cin>>n;
+    p->Carr[ p->Size].name=n;
+
+    cout<<"性別:\t1.男\t2.女";
+    while(1)
+    {
+    string s="0";
+    cin>>s;
+    if(s=="1")
+    {
+        p->Carr[p->Size].sex="男";
+        break;
+    }
+    else if(s=="2")
+    {
+        p->Carr[p->Size].sex="女";
+        break;
+    }
+    else
+    {
+     cout<<"錯誤代碼";
+    }
+    }
+
+    cout<<"年齡:";
+    cin>>p->Carr[p->Size].age;
+
+     cout<<"電話:";
+     string t="0";
+    cin>>t;
+    p->Carr[p->Size].tel=t;
+
+     cout<<"地址:";
+     string ad="0";
+    cin>>ad;
+    p->Carr[p->Size].addr=ad;
+
+    cout<<"姓名:"<<p->Carr[ p->Size].name<<"\t\t"
+    <<"性別:" <<p->Carr[p->Size].sex<<"\t"
+    <<"年齡:"<<p->Carr[p->Size].age<<"\t"
+    <<"電話:"<<p->Carr[p->Size].tel<<"\t"
+    <<"地址:"<<p->Carr[p->Size].addr<<endl;
+
+    system("pause");
+    system("cls");
+
+    p->Size++;
+  }
+}
+
+
+void menu()
+{
+    cout<<"1.新增"<<endl;
+    cout<<"2.顯示"<<endl;
+    cout<<"3.查詢"<<endl;
+    cout<<"4.修改"<<endl;
+    cout<<"5.刪除"<<endl;
+    cout<<"6.清空"<<endl;
+    cout<<"0.退出"<<endl;
+}
+
+
+
+
+
+
+void showinfo(adbk*p,int i)
+    {
+    for(int i=0;p->Size>i;i++)
+        {
+          cout<<"姓名:"<<p->Carr[i].name<<"\t"
+        <<"性別:" <<p->Carr[i].sex<<"\t"
+        <<"年齡:"<<p->Carr[i].age<<"\t"
+        <<"電話:"<<p->Carr[i].tel<<"\t"
+        <<"地址:"<<p->Carr[i].addr<<endl;
+        }
+
+    system("pause");
+        system("cls");
+
+    }
+
+
+
+    void checkinfo(adbk*p,int *t,int *f)
+    {
+        int Number=0;
+        *t=0;
+        *f=0;
+        string c="0";
+        cin>>c;
+      for(int i=0;p->Size>i;i++)
+      {
+          if(c==p->Carr[i].name)
+         {
+        cout<<i+1<<"."
+            <<"姓名:"<<p->Carr[i].name<<"\t\t"
+            <<"性別:" <<p->Carr[i].sex<<"\t"
+            <<"年齡:"<<p->Carr[i].age<<"\t"
+            <<"電話:"<<p->Carr[i].tel<<"\t"
+            <<"地址:"<<p->Carr[i].addr<<"\t"<<endl;
+
+            *f=i;
+            (*t)++;
+
+
+
+         }
+
+
+}
+    if (*t==0)
+        {
+            cout<<"查無此人"<<endl;
+            system("pause");
+            system("cls");
+
+        }
+    else if(*t==1)
+    {
+
+    }
+    else
+    {
+      *f=0;
+    }
+
+
+
+    }
+
+    void Delete(adbk *p,int *c5 )
+    {
+        int det=0;
+             cout<<"是否刪除此人?\t1.是2.否";
+            while(1)
+            {
+             cin>>det;
+             if(det==1)
+             {
+                for(int i=*c5;p->Size>=i;i++)
+                p->Carr[i]=p->Carr[i+1];
+                p->Size--;
+                cout<<"已刪除!";
+                system("pause");
+                system("cls");
+                break;
+
+
+             }
+             else if(det==2)
+             {
+                system("cls");
+                break;
+             }
+             else
+             {
+               cout<<"錯誤代碼";
+             }
+    }
+    }
+    void alter(adbk*p,int j)
+    {
+
+        adbk temp;
+    temp.Carr[j].name=p->Carr[ j].name;
+    temp.Carr[j].sex=p->Carr[ j].sex;
+    temp.Carr[j].age=p->Carr[ j].age;
+    temp.Carr[j].tel=p->Carr[ j].tel;
+    temp.Carr[j].addr=p->Carr[ j].addr;
+    cout<<"姓名:";
+    string n="0";
+    cin>>n;
+    p->Carr[j].name=n;
+
+    cout<<"性別:\t1.男\t2.女";
+    while(1)
+    {
+    string s="0";
+    cin>>s;
+    if(s=="1")
+    {
+        p->Carr[j].sex="男";
+        break;
+    }
+    else if(s=="2")
+    {
+        p->Carr[j].sex="女";
+        break;
+    }
+    else
+    {
+     cout<<"錯誤代碼";
+    }
+    }
+
+    cout<<"年齡:";
+    cin>>p->Carr[j].age;
+
+     cout<<"電話:";
+     string t="0";
+    cin>>t;
+    p->Carr[j].tel=t;
+
+     cout<<"地址:";
+     string ad="0";
+    cin>>ad;
+    p->Carr[j].addr=ad;
+
+    cout<<"姓名:"<<p->Carr[ j].name<<"\t\t"
+    <<"性別:" <<p->Carr[j].sex<<"\t"
+    <<"年齡:"<<p->Carr[j].age<<"\t"
+    <<"電話:"<<p->Carr[j].tel<<"\t"
+    <<"地址:"<<p->Carr[j].addr<<endl;
+
+    cout<<"是否修改?\t1.是2.否";
+    while(1)
+            {
+            int A=0;
+             cin>>A;
+             if(A==1)
+             {
+                system("pause");
+                system("cls");
+                break;
+             }
+             else if(A==2)
+             {
+           p->Carr[ j].name =temp.Carr[j].name;
+           p->Carr[ j].sex= temp.Carr[j].sex;
+            p->Carr[ j].age=temp.Carr[j].age;
+           p->Carr[ j].tel =temp.Carr[j].tel;
+            p->Carr[ j].addr= temp.Carr[j].addr;
+                system("cls");
+                break;
+             }
+             else
+             {
+               cout<<"錯誤代碼";
+             }
+    }
+
+    }
+
+
+
+
+
+int main()
+{
+    string select="0";
+    adbk abs;
+    abs.Size=0;
+
+    while(1)
+    {
+
+       menu();
+        flag:
+       cin>>select;
+       if(select=="0")
+       {
+         return 0;
+       }
+
+
+        else if(select=="1")
+       { system("cls");
+        add(&abs);
+
+       }
+
+
+       else if(select=="2")
+       {
+         system("cls");
+        showinfo(&abs,abs.Size);
+
+       }
+
+
+       else if(select=="3")
+       {
+            system("cls");
+           int a3=0;
+           int b3=0;
+        cout<<"請輸入欲查詢者的姓名";
+        checkinfo(&abs,&a3,&b3);
+        if(a3>0)
+        {
+            system("pause");
+        }
+        system("cls");
+       }
+
+
+       else if(select=="4")
+       {
+            system("cls");
+        cout<<"請輸入欲修改者的姓名";
+         int d4=0;
+         int c4=0;
+         checkinfo(&abs,&d4,&c4);
+         if(d4==1)
+         {
+            alter(&abs,c4);
+
+         }
+         else if(d4>=2)
+         {
+             cout<<"查到多個同名者，請選擇修改對象。";
+             int s4=0;
+             cin>>s4;
+             s4--;
+              alter(&abs,s4);
+}
+       }
+
+
+        else if(select=="5")
+       {
+            system("cls");
+        cout<<"請輸入欲刪除者的姓名";
+         int d5=0;
+         int c5=0;
+         checkinfo(&abs,&d5,&c5);
+         if(d5==1)
+         {
+           Delete(&abs,&c5);
+         }
+         else if(d5>=2)
+         {
+             cout<<"查到多個同名者，請選擇刪除對象。";
+             int s5=0;
+             cin>>s5;
+            s5--;
+     Delete(&abs,&s5);
+
+}
+       }
+
+
+       else if(select=="6")
+       {
+        cout<<"是否清空所有聯絡人?\t1.是2.否";
+        string det6="0";
+        int leave6=0;
+
+
+        while(1)
+        {
+
+          if(leave6==1)
+          {
+              break;
+          }
+          else
+          {
+        cin>>det6;
+        if(det6=="1")
+        {
+        cout<<"這會使你失去目前所有的資料，你確定要這樣做嗎?\t1.是2.否";
+        string d6="0";
+            while(1)
+            {
+           cin>>d6;
+
+        if(d6=="1")
+        {
+
+          abs.Size=0;
+          leave6=1;
+          system("pause");
+          system("cls");
+          break;
+        }
+        else if(d6=="2")
+        {
+           system("cls");
+            leave6=1;
+           break;
+
+        }
+        else
+        {
+           cout<<"錯誤代碼";
+        }
+            }
+        }
+         else if(det6=="2")
+         {
+
+            system("cls");
+            break;
+          }
+
+
+
+       else
+       {
+
+          cout<<"錯誤代碼";
+
+
+       }
+
+        }
+        }
+       }
+    else
+    {
+     cout<<"錯誤代碼";
+    goto flag;
+    }
+    }
+}
